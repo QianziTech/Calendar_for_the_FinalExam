@@ -1,31 +1,33 @@
 # Calendar_for_importing the Final Exam
 
-### Get the Final Exam schedule from your Teaching integrated information service platform, then create ics file for inputting to your mobile phone.
+Tips:You can get  <a href='./manual/English version.md'>English version</a> of the page here.
+
+### 从教务系统获取您的期末考试安排，并将其导入至您的日历软件
 
 #### What's Function?
 
-- Match the campus place (for Huzhou University/Huzhou College,but you can replace it by change the JSON file on <code>/modules</code>)
-- Select the Final Exam date,classroom,place,and more
-- Alarm you before 1 hour
+- 关联校区位置（默认为湖州师范学院/湖州学院的校区关联关系，但您可以通过修改位于 <code>/modules</code>文件夹下的JSON文件来适配您自己的学校的校区关联关系)。
+- 筛选考试地点，科目，时间。
+- 提前一小时通知您。
 
 #### How to start?
 
-To input the final exam data and create the ICS file,you should download the exam schedule file in excel fitst.
+为了导入您的期末考试数据并生成ICS文件，您需要先下载您的Excel版期末考试数据。
 
-The steps for Zhengfang System are following:
+如果您的教务系统是正方教务系统，请按以下步骤操作：
 
 <ol>
-    <li> Come to your teaching system,and go to your exam schedule list:</li>
+    <li> 前往教务系统并切换到考试信息页面:</li>
     <br>
-    <li> Click the "考试信息查询"in Chinese,or"Examination information inquiry"in English:</li>
+    <li> 点击“考试信息查询。</li>
     <img src='manual_imgs/1.png'></img>
-    <li> Click "导出"/"Export"，then choose"Excel table"</li>
+    <li> 点击”导出“并选择“Excel格式”。</li>
     <img src='manual_imgs/2.png'></img>
-    <li> Download the repository to your computer,and Uncompress all the files if you download it directly.</li>
-    <li> Make sure you have Python 3.12 or later,then run the command on the repository folder:<code>pip install -r requirements.txt</code></li>
-    <li> Run main.py,and input the Excel you have got on step3.</li>
-    <li> You will got a ICS file on the folder <code>result</code> where the main program is.</li>
-    <li> Input the ICS file to your calendar apps.
+    <li> 下载此存储库到您的电脑并解压。</li>
+    <li> 确保您的电脑具有Python 3.12以上版本。在此程序存储文件夹中打开终端，运行以下命令：<code>pip install -r requirements.txt</code></li>
+    <li> 运行main.py，并按提示导入您在步骤3中得到的excel文件。</li>
+    <li> 您会在此程序运行路径下的文件夹 <code>result</code> 得到ICS日历文件。</li>
+    <li> 将这个ICS文件导入进您的日历App.
 </ol>
 
-### The application is still filling.
+### (此程序仍在完善，如有异常，敬请Issue提出！)
