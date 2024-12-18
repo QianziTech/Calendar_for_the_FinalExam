@@ -1,5 +1,6 @@
 
 import modules.excel_hashing as excel_hashing
+
 import pandas as pd
 import tkinter as tk
 from tkinter import ttk, filedialog
@@ -34,6 +35,7 @@ def create_ics_from_dataframe(df, filename):
     from icalendar import Calendar, Event,Alarm
     from datetime import datetime,timedelta
     import re
+    from modules.get_canpus import get_campus
     
     cal = Calendar()
     for index,row in df.iterrows():
@@ -63,20 +65,7 @@ def create_ics_from_dataframe(df, filename):
     with open(filename, 'wb') as f:
         f.write(cal.to_ical())
 
-def get_campus(location):
-    import re
-    from tkinter import filedialog
-    match = re.match(r'(\d+)号楼', location)
-    if match:
-            building_number = match.group(1)
-            if building_number in ['1', '2', '3', '4', '5', '6', '7', '8']:
-                return '西校区'
-            elif building_number in ['9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19','20','21']:
-                return '中校区'
-            elif building_number in ['22', '23', '24', '25', '26', '27', '28', '29', '30', '31','32',"33"]:
-                return '东校区'
-            else:
-                return 'Unknown Campus'
+
 
 if __name__ == "__main__":
 
