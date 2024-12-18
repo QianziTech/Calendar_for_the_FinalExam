@@ -1,6 +1,6 @@
 
 import modules.excel_hashing as excel_hashing
-
+import os,shutil
 import pandas as pd
 import tkinter as tk
 from tkinter import ttk, filedialog
@@ -34,7 +34,6 @@ def create_gui_for_column_selection(columns):
 def create_ics_from_dataframe(df, filename):
     from icalendar import Calendar, Event,Alarm
     from datetime import datetime,timedelta
-    import re
     from modules.get_canpus import get_campus
     
     cal = Calendar()
@@ -77,13 +76,25 @@ if __name__ == "__main__":
     )
     root.destroy()
     examlist=excel_hashing.to_csv(excelfile)
-    print(examlist)
-    columnlist=examlist.columns.values.tolist()
-    quest=create_gui_for_column_selection(columnlist)
-# 过滤出用户选择的列
+    #自选导入列预留代码
+    # columnlist=examlist.columns.values.tolist()
+    # quest=create_gui_for_column_selection(columnlist)
+    quest=["课程名称", "考试时间", "考试地点", "考试座号"]
+    # 过滤出用户选择的列
     filtered_examlist = examlist[quest]
-    print(filtered_examlist)
+
+    output_dir = './result'
+    temp_dir = './output'
+    if os.path.exists(temp_dir):
+        shutil.rmtree(temp_dir)
+    os.makedirs(output_dir)
+    
     # 生成 ICS 文件
-    create_ics_from_dataframe(filtered_examlist, './result/output.ics')
+    output_file = os.path.join(output_dir, 'output.ics')
+    create_ics_from_dataframe(filtered_examlist, output_file)
+    
+    # 输出 ICS 文件的保存位置
+    print(f"ICS 文件已保存到: {os.path.abspath(output_file)}")
+
 
 
